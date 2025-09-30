@@ -66,7 +66,7 @@ Here is the full list of available Spec-Kit commands:
 
 The following diagram illustrates the typical Spec-Kit development workflow:
 
-```/dev/null/workflow.md#L1-19
+```mermaid
 graph TD
     A[Start: Constitution] --> B{Loop for Feature/Bug/Iteration};
 
