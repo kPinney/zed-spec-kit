@@ -52,8 +52,8 @@ The extension operates as an intelligent command processor within Zed's AI chat,
 ```mermaid
 graph TD
     A[User triggers slash command in Zed] --> B{Spec-Kit Extension};
-    B --> C{Reads command template from<br/>`assets/commands/*.toml`};
-    C --> D{Reads project files<br/>(specs, plans, etc.)};
+    B --> C{Reads command template from<br/>assets/commands/*.toml};
+    C --> D{Reads project files<br/>specs, plans, etc.};
     D --> E{Constructs final prompt};
     E --> F[Sends prompt to AI Agent];
     F --> G[AI Agent executes task];
