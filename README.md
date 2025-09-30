@@ -6,9 +6,9 @@ This is an **MVP (Minimum Viable Product)** extension with severe limitations. I
 
 **TLDR; It doesn't work.**
 
-*   **Slash Command Recognition**: Zed's current design for AI chat slash commands is in text-only chats, leading to fundamental incompatibilities with this extension's dynamic command generation. This results in commands not being recognized even when correctly configured.
-*   **Platform Support**: This extension has only been tested and confirmed to work reliably on **macOS (Bash shell)**.
-*   **AI Model Compatibility**: This extension has only been tested to work with **Gemini** models available through Zed's Google AI integration. Other AI providers may not be fully supported.
+- **Slash Command Recognition**: Zed's current design for AI chat slash commands is in text-only chats, leading to fundamental incompatibilities with this extension's dynamic command generation. This results in commands not being recognized even when correctly configured.
+- **Platform Support**: This extension has only been tested and confirmed to work reliably on **macOS (Bash shell)**.
+- **AI Model Compatibility**: This extension has only been tested to work with **Gemini** models available through Zed's Google AI integration. Other AI providers may not be fully supported.
 
 ## Overview
 
@@ -22,18 +22,18 @@ Spec-Kit is a methodology centered around **Spec-Driven Development**. Tradition
 
 The core philosophy emphasizes:
 
-*   **Intent-Driven Development**: Clearly defining the "_what_" before the "_how_".
-*   **Rich Specification Creation**: Using established principles and guardrails to create detailed, unambiguous specs.
-*   **Multi-Step Refinement**: Acknowledging that complex software is built through a series of steps, not one-shot generation.
-*   **AI-Powered Interpretation**: Relying on advanced AI models to interpret specifications and execute the development process.
+- **Intent-Driven Development**: Clearly defining the "_what_" before the "_how_".
+- **Rich Specification Creation**: Using established principles and guardrails to create detailed, unambiguous specs.
+- **Multi-Step Refinement**: Acknowledging that complex software is built through a series of steps, not one-shot generation.
+- **AI-Powered Interpretation**: Relying on advanced AI models to interpret specifications and execute the development process.
 
 By adopting this structured approach, `spec-kit` minimizes ambiguity and ensures the AI assistant has the necessary context to perform tasks effectively, reducing errors and rework.
 
 ## Key Features
 
-*   **Native Slash Commands**: Use core `spec-kit` commands like `/specify`, `/plan`, and `/implement` directly within Zed's AI chat.
-*   **Enhanced Context Management**: Introduces a new `/context` command to generate a timestamped summary file of your project's state. This is perfect for grounding new chat threads and ensuring the AI has the most relevant information.
-*   **Streamlined Workflow**: Enforces a predictable, specification-driven development cycle, reducing ambiguity and improving collaboration with your AI assistant.
+- **Native Slash Commands**: Use core `spec-kit` commands like `/specify`, `/plan`, and `/implement` directly within Zed's AI chat.
+- **Enhanced Context Management**: Introduces a new `/context` command to generate a timestamped summary file of your project's state. This is perfect for grounding new chat threads and ensuring the AI has the most relevant information.
+- **Streamlined Workflow**: Enforces a predictable, specification-driven development cycle, reducing ambiguity and improving collaboration with your AI assistant.
 
 ## Requirements
 
@@ -63,14 +63,14 @@ graph TD
 
 Here is the full list of available Spec-Kit commands:
 
-*   `/constitution`: Establish project principles.
-*   `/specify`: Create a detailed feature specification from a high-level description.
-*   `/clarify`: Clarify and de-risk the current specification.
-*   `/plan`: Create an implementation plan from the current specification.
-*   `/tasks`: Generate actionable tasks from the current implementation plan.
-*   `/analyze`: Validate alignment & surface inconsistencies across artifacts.
-*   `/implement`: Execute a specific task, generating the necessary code and files.
-*   `/context`: Generates a timestamped `context_summary_YYYYMMSS_HHMMSS.md` file in your project. Use this to ground new AI chat threads with the latest project context.
+- `/constitution`: Establish project principles.
+- `/specify`: Create a detailed feature specification from a high-level description.
+- `/clarify`: Clarify and de-risk the current specification.
+- `/plan`: Create an implementation plan from the current specification.
+- `/tasks`: Generate actionable tasks from the current implementation plan.
+- `/analyze`: Validate alignment & surface inconsistencies across artifacts.
+- `/implement`: Execute a specific task, generating the necessary code and files.
+- `/context`: Generates a timestamped `context_summary_YYYYMMSS_HHMMSS.md` file in your project. Use this to ground new AI chat threads with the latest project context.
 
 ## Workflow Diagram
 
@@ -91,13 +91,13 @@ graph TD
 
     I(Context: Optional, User-Determined)
 
-    I --> B;
-    I --> C;
-    I --> D;
-    I --> E;
-    I --> F;
-    I --> G;
-    I --> H;
+    I ..> B;
+    I ..> C;
+    I ..> D;
+    I ..> E;
+    I ..> F;
+    I ..> G;
+    I ..> H;
 ```
 
 ## Getting Started
@@ -112,4 +112,4 @@ graph TD
 
 This extension is built in Rust and compiles to WebAssembly (WASM) to run securely within the Zed editor's extension host. If you are interested in contributing, please start by reading the development guide.
 
-*   [**Development Primer**](./reference/Notes/development_primer.md)
+- [**Development Primer**](./reference/Notes/development_primer.md)
