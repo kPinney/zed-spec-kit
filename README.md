@@ -91,13 +91,13 @@ graph TD
 
     I(Context: Optional, User-Determined)
 
-    I -- optional input --> B;
-    I -- optional input --> C;
-    I -- optional input --> D;
-    I -- optional input --> E;
-    I -- optional input --> F;
-    I -- optional input --> G;
-    I -- optional input --> H;
+    I --> B;
+    I --> C;
+    I --> D;
+    I --> E;
+    I --> F;
+    I --> G;
+    I --> H;
 ```
 
 ## Getting Started
