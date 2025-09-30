@@ -1,0 +1,55 @@
+description = "Scans the entire project state and creates a comprehensive, timestamped context summary file for long-term memory and new agent sessions. This version combines high-level project goals with detailed technical summaries."
+
+prompt = """
+---
+description: "Scans the entire project state and creates a comprehensive, timestamped context summary file for long-term memory and new agent sessions. This version combines high-level project goals with detailed technical summaries."
+---
+
+Goal: To create a single, comprehensive markdown file that summarizes the entire project's state. This file is intended to be used to ground a new AI assistant chat session, preserving the context of the work completed so far and minimizing the need to re-read multiple artifacts.
+
+You are operating inside the following project directory: `$PROJECT_ROOT`. Use this as the root for all file scanning operations.
+
+Execution steps:
+
+1.  **Establish Timestamp**: Get the current UTC date and time. Format it as `YYYYMMDDTHHMMSS` to be used in the output filename.
+
+2.  **Scan Project Artifacts**: Read and understand the following key files to build a comprehensive picture of the project's state:
+    *   **Constitution**: Read `/.specify/memory/constitution.md` to understand the project's guiding principles and core constraints.
+    *   **All Feature Specifications & Plans**: Iterate through all feature directories under `/.specify/specs/`. For each, read its `spec.md` and `plan.md` to build a historical understanding of the project's evolution.
+    *   **Latest Task List**: From the most recent feature directory, read `tasks.md` to determine the completion status of the current work.
+    *   **Key Source Code Files**: Identify and scan the primary source code files as outlined in the latest `plan.md` to understand the current implementation structure.
+
+3.  **Synthesize Context Summary**: Using the information gathered, generate a markdown summary that strictly follows the structure defined in `reference/context/generic/v2/context-template.md`. Synthesize the following sections:
+
+    *   **1. Project Goal & Core Architecture**: Summarize the primary objective from the latest `spec.md` and the high-level technical approach from the latest `plan.md`.
+    *   **Key Constraint(s)**: Extract non-negotiable constraints from `constitution.md` and any technology-specific constraints from the relevant `plan.md`.
+
+    *   **2. Workflow Executed**: For the latest feature, list the `spec-kit` commands that have been successfully run by checking for the existence of `spec.md`, `plan.md`, `tasks.md`, etc. Briefly describe the outcome of each.
+
+    *   **3. Technical Summary**:
+        *   **Active Technologies**: Aggregate "Language/Version", "Primary Dependencies", and "Storage" from **all** `plan.md` files. Consolidate them into a unique list representing the project's full tech stack.
+        *   **Project Structure**: Based on the latest `plan.md`, generate a `tree`-like representation of the main directories.
+        *   **Key Components & Implementation State**: Describe the main components from the latest `plan.md`. Cross-reference with the latest `tasks.md` to determine if each component is "Not Started", "In Progress", or "Complete".
+        *   **Commands**: Based on the primary language(s) identified, provide standard commands for building, testing, and linting.
+        *   **Code Style**: Note the standard conventions for the primary language(s) (e.g., "Follow standard PEP 8 for Python," "Use `cargo fmt` for Rust").
+
+    *   **4. Development History**:
+        *   **Key Challenges & Resolutions**: Review the history of `plan.md` files or any clarification artifacts. Summarize any significant technical problems that were solved. If none are obvious, state "No major challenges were recorded."
+        *   **Recent Changes**: Identify the last 3 feature directories. For each, provide a one-sentence summary of the feature's goal from its `spec.md`.
+
+    *   **5. Current Status**: State the project's overall phase based on the last completed command for the most recent feature and the completion status of its `tasks.md`.
+
+4.  **Create the Context File**:
+    *   Define the output directory path: `/.specify/memory/context-snapshots/`.
+    *   Construct the filename using the timestamp from Step 1: `context-summary-[TIMESTAMP].md`.
+    *   Create the output directory if it does not already exist.
+    *   Write the synthesized summary from Step 3 into the new file.
+
+5.  **Report Completion**: Announce the successful creation of the context file and provide its full path to the user.
+
+Behavior Rules:
+-   This command is strictly additive; it should only create one new file. Do NOT modify any other files.
+-   The summary should be concise but comprehensive. It must be detailed enough for another AI agent to understand the project's purpose, history, and technical state without reading other files.
+-   If any required source artifacts (like `plan.md` or `spec.md`) are missing for the latest feature, report this as a blocker and suggest the user run the appropriate commands first.
+-   Information should be aggregated from all relevant historical files, not just the most recent one, especially for sections like "Active Technologies" and "Recent Changes".
+"""

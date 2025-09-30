@@ -1,0 +1,41 @@
+id = "spec-kit"
+name = "Spec Kit"
+version = "0.0.1"
+schema_version = 1
+authors = ["kPinney <119605967+kPinney@users.noreply.github.com >"]
+description = "A Zed extension for implementing the spec-kit development framework."
+repository = "https://github.com/kpinney/zed-spec-kit"
+
+# Command Definitions
+
+[slash_commands.constitution]
+description = "Establish project principles."
+requires_argument = true
+
+[slash_commands.specify]
+description = "Create a feature specification from a description."
+requires_argument = true
+
+[slash_commands.clarify]
+description = "Clarify and de-risk the current specification."
+requires_argument = false
+
+[slash_commands.plan]
+description = "Create an implementation plan from the current specification."
+requires_argument = false
+
+[slash_commands.tasks]
+description = "Generate actionable tasks from the current implementation plan."
+requires_argument = false
+
+[slash_commands.analyze]
+description = "Validate alignment & surface inconsistencies across artifacts."
+requires_argument = false
+
+[slash_commands.implement]
+description = "Execute the implementation plan by processing tasks.md."
+requires_argument = false
+
+[slash_commands.context]
+description = "Generates a timestamped context summary file."
+requires_argument = false

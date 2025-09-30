@@ -1,0 +1,22 @@
+# Rust build artifacts
+/target/
+**/target/
+
+# Wasm build artifact
+/spec-kit/extension.wasm
+
+# macOS specific
+.DS_Store
+**/.DS_Store
+
+# User-specific directories
+.gemini/
+.specify/
+
+# Reference and notes directory
+reference/
+
+# IDE settings
+.vscode/
+.idea/
+.zed/

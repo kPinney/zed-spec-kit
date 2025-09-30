@@ -1,0 +1,15 @@
+[package]
+name = "spec-kit"
+version = "0.0.1"
+edition = "2021"
+authors = ["kPinney <119605967+kPinney@users.noreply.github.com >"]
+description = "A Zed extension for implementing the spec-kit development framework."
+repository = "https://github.com/kpinney/zed-spec-kit"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.1.0"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
