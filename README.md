@@ -49,6 +49,16 @@ The extension operates as an intelligent command processor within Zed's AI chat,
 2.  **The Zed Extension (The Processor)**: The extension intercepts the command. It reads the necessary `spec-kit` templates and existing project artifacts (like specifications) from your workspace, processes them in memory, and constructs a detailed, context-rich prompt.
 3.  **The AI Agent (Gemini)**: The AI receives the comprehensive prompt from the extension and executes the task, such as generating a technical plan or writing code, with a deep understanding of the project's context.
 
+```mermaid
+graph TD
+    A[User triggers slash command in Zed] --> B{Spec-Kit Extension};
+    B --> C{Reads command template from<br/>`assets/commands/*.toml`};
+    C --> D{Reads project files<br/>(specs, plans, etc.)};
+    D --> E{Constructs final prompt};
+    E --> F[Sends prompt to AI Agent];
+    F --> G[AI Agent executes task];
+```
+
 ## Available Commands
 
 Here is the full list of available Spec-Kit commands:
