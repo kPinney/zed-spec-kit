@@ -6,7 +6,7 @@ This is an **MVP (Minimum Viable Product)** extension with severe limitations. I
 
 **TLDR; It doesn't work.**
 
-*   **Slash Command Recognition**: Zed's current design for AI chat slash commands is primarily text-based, leading to fundamental incompatibilities with this extension's dynamic command generation. This results in commands not being recognized even when correctly configured.
+*   **Slash Command Recognition**: Zed's current design for AI chat slash commands is in text-only chats, leading to fundamental incompatibilities with this extension's dynamic command generation. This results in commands not being recognized even when correctly configured.
 *   **Platform Support**: This extension has only been tested and confirmed to work reliably on **macOS (Bash shell)**.
 *   **AI Model Compatibility**: This extension has only been tested to work with **Gemini** models available through Zed's Google AI integration. Other AI providers may not be fully supported.
 
@@ -51,12 +51,44 @@ The extension operates as an intelligent command processor within Zed's AI chat,
 
 ## Available Commands
 
+Here is the full list of available Spec-Kit commands:
+
+*   `/constitution`: Establish project principles.
 *   `/specify`: Create a detailed feature specification from a high-level description.
+*   `/clarify`: Clarify and de-risk the current specification.
 *   `/plan`: Generate a technical implementation plan based on an existing specification.
 *   `/tasks`: Break down a technical plan into a list of actionable, bite-sized tasks.
+*   `/analyze`: Validate alignment & surface inconsistencies across artifacts.
 *   `/implement`: Execute a specific task, generating the necessary code and files.
-*   `/context`: **(New)** Creates a timestamped `context_summary_YYYYMMDD_HHMMSS.md` file in your project. Use this to ground new AI chat threads with the latest project context.
-*   `/analyze`: (Read-only) Validates alignment between different project artifacts and highlights inconsistencies.
+*   `/context`: Generates a timestamped `context_summary_YYYYMMDD_HHMMSS.md` file in your project. Use this to ground new AI chat threads with the latest project context.
+
+## Workflow Diagram
+
+The following diagram illustrates the typical Spec-Kit development workflow:
+
+```/dev/null/workflow.md#L1-19
+graph TD
+    A[Start: Constitution] --> B{Loop for Feature/Bug/Iteration};
+
+    B --> C{Specify};
+    C --> D{Clarify};
+    D --> E{Plan};
+    E --> F{Tasks};
+    F --> G{Analyze};
+    G --> H{Implement};
+
+    H --> B;
+
+    subgraph Context Management
+        I[Context] --> B;
+        I --> C;
+        I --> D;
+        I --> E;
+        I --> F;
+        I --> G;
+        I --> H;
+    end
+```
 
 ## Getting Started
 
@@ -64,7 +96,7 @@ The extension operates as an intelligent command processor within Zed's AI chat,
 2.  Install the "Spec-Kit for Zed" extension from the Zed extension registry.
 3.  Open a project that has already been initialized with `spec-kit`.
 4.  Open the AI chat panel (`cmd-enter` on macOS).
-5.  Begin your development workflow, starting with `/specify` or using `/context` to ground a new conversation.
+5.  Begin your development workflow, starting with `/constitution` or `/specify`, or using `/context` to ground a new conversation.
 
 ## Development
 
