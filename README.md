@@ -91,13 +91,13 @@ graph TD
 
     I(Context: Optional, User-Determined)
 
-    I ..> B;
-    I ..> C;
-    I ..> D;
-    I ..> E;
-    I ..> F;
-    I ..> G;
-    I ..> H;
+    I -.> B;
+    I -.> C;
+    I -.> D;
+    I -.> E;
+    I -.> F;
+    I -.> G;
+    I -.> H;
 ```
 
 ## Getting Started
