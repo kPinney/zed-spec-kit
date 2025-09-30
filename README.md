@@ -56,11 +56,11 @@ Here is the full list of available Spec-Kit commands:
 *   `/constitution`: Establish project principles.
 *   `/specify`: Create a detailed feature specification from a high-level description.
 *   `/clarify`: Clarify and de-risk the current specification.
-*   `/plan`: Generate a technical implementation plan based on an existing specification.
-*   `/tasks`: Break down a technical plan into a list of actionable, bite-sized tasks.
+*   `/plan`: Create an implementation plan from the current specification.
+*   `/tasks`: Generate actionable tasks from the current implementation plan.
 *   `/analyze`: Validate alignment & surface inconsistencies across artifacts.
 *   `/implement`: Execute a specific task, generating the necessary code and files.
-*   `/context`: Generates a timestamped `context_summary_YYYYMMDD_HHMMSS.md` file in your project. Use this to ground new AI chat threads with the latest project context.
+*   `/context`: Generates a timestamped `context_summary_YYYYMMSS_HHMMSS.md` file in your project. Use this to ground new AI chat threads with the latest project context.
 
 ## Workflow Diagram
 
@@ -68,26 +68,26 @@ The following diagram illustrates the typical Spec-Kit development workflow:
 
 ```mermaid
 graph TD
-    A[Start: Constitution] --> B{Loop for Feature/Bug/Iteration};
+    A[Start: Constitution] --> B{Loop for each feature, bug, or iteration};
 
-    B --> C{Specify};
-    C --> D{Clarify};
-    D --> E{Plan};
-    E --> F{Tasks};
-    F --> G{Analyze};
-    G --> H{Implement};
+    B --> C(Specify);
+    C --> D(Clarify);
+    D --> E(Plan);
+    E --> F(Tasks);
+    F --> G(Analyze);
+    G --> H(Implement);
 
     H --> B;
 
-    subgraph Context Management
-        I[Context] --> B;
-        I --> C;
-        I --> D;
-        I --> E;
-        I --> F;
-        I --> G;
-        I --> H;
-    end
+    I(Context: Optional, User-Determined)
+
+    I -- optional input --> B;
+    I -- optional input --> C;
+    I -- optional input --> D;
+    I -- optional input --> E;
+    I -- optional input --> F;
+    I -- optional input --> G;
+    I -- optional input --> H;
 ```
 
 ## Getting Started
